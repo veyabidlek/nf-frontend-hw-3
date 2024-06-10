@@ -1,4 +1,4 @@
-export default () => {
+export default function CTA() {
   return (
     <section className="py-14">
       <div className="max-w-screen-xl mx-auto px-4 md:text-center md:px-8">
@@ -23,4 +23,5 @@ export default () => {
       </div>
     </section>
   );
-};
+}
+CTA.displayName = "CTA";

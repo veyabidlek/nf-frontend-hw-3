@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-
-export default () => {
+import Image from "next/image";
+export default function NavBar() {
   const [state, setState] = useState(false);
 
   const navigation = [
@@ -99,4 +99,5 @@ export default () => {
       </div>
     </nav>
   );
-};
+}
+NavBar.displayName = "NavBar";

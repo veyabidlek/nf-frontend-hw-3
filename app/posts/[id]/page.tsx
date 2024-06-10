@@ -1,13 +1,14 @@
-"use client"; // Mark the component as a client component
+"use client";
 
-import { useParams } from "next/navigation"; // Use useParams hook
+import { useParams } from "next/navigation";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import NavBar from "@/app/components/navBar";
 import Footer from "@/app/components/footer";
+import Image from "next/image";
 
 const PostPage = () => {
-  const { id } = useParams(); // Get the 'id' parameter from the route
+  const { id } = useParams();
   const [post, setPost] = useState(null);
   const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -78,5 +79,6 @@ const PostPage = () => {
     </div>
   );
 };
+PostPage.displayName = "PostPage";
 
 export default PostPage;

@@ -13,3 +13,4 @@ export default function Blog() {
     </div>
   );
 }
+Blog.displayName = "Blog";
