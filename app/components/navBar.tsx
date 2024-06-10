@@ -1,20 +1,21 @@
 "use client";
+
 import { useState } from "react";
-import Image from "next/image";
+
 export default function NavBar() {
   const [state, setState] = useState(false);
-
   const navigation = [
-    { title: "Our Story", path: "" },
-    { title: "Membership", path: "" },
-    { title: "Write", path: "" },
+    { title: "Home", path: "/" },
+    { title: "Blog", path: "/posts" },
+    { title: "Features", path: "#" },
+    { title: "Get in touch", path: "#" },
   ];
 
   return (
-    <nav className="bg-white border-b w-full md:static md:text-sm md:border-none">
+    <nav className="bg-white w-full border-b md:border-0 md:static">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <a href="javascript:void(0)">
+          <a href="/">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Medium_%28website%29_logo.svg/2560px-Medium_%28website%29_logo.svg.png"
               width={120}
@@ -24,35 +25,37 @@ export default function NavBar() {
           </a>
           <div className="md:hidden">
             <button
-              className="text-gray-500 hover:text-black"
+              className="text-gray-700 hover:text-gray-900"
               onClick={() => setState(!state)}
             >
               {state ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
                 >
                   <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  strokeWidth={2}
                 >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    d="M4 6h16M4 12h16m-7 6h7"
                   />
                 </svg>
               )}
@@ -64,37 +67,21 @@ export default function NavBar() {
             state ? "block" : "hidden"
           }`}
         >
-          <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
-            {navigation.map((item, idx) => {
-              return (
-                <li key={idx} className="text-gray-700 hover:text-black">
-                  <a href={item.path} className="block">
-                    {item.title}
-                  </a>
-                </li>
-              );
-            })}
-            <span className="hidden w-px h-6 bg-gray-300 md:block"></span>
-            <div className=" space-y-3 items-center gap-x-6 md:flex md:space-y-0">
-              <li>
-                <a
-                  href=""
-                  className="block py-3 text-center text-gray-700 hover:text-black border rounded-lg md:border-none"
-                >
-                  Log in
-                </a>
+          <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+            {navigation.map((item, idx) => (
+              <li key={idx} className="text-gray-700 hover:text-gray-900">
+                <a href={item.path}>{item.title}</a>
               </li>
-
-              <li>
-                <a
-                  href=""
-                  className="block py-3 px-4 font-medium text-center text-white bg-black hover:bg-black  active:shadow-none rounded-lg shadow md:inline"
-                >
-                  Get Started
-                </a>
-              </li>
-            </div>
+            ))}
           </ul>
+        </div>
+        <div className="hidden md:inline-block">
+          <a
+            href="#"
+            className="py-3 px-4 text-white bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg shadow"
+          >
+            Get Started
+          </a>
         </div>
       </div>
     </nav>
