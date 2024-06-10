@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Image from "next/image";
 export default function NavBar() {
   const [state, setState] = useState(false);
   const navigation = [
@@ -16,11 +16,11 @@ export default function NavBar() {
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <a href="/">
-            <img
+            <Image
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Medium_%28website%29_logo.svg/2560px-Medium_%28website%29_logo.svg.png"
               width={120}
               height={50}
-              alt="Float UI logo"
+              alt="Medium logo"
             />
           </a>
           <div className="md:hidden">

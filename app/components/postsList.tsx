@@ -44,9 +44,10 @@ export default function Posts() {
               <Link href={`/posts/${post.id}`}>
                 <div>
                   <div className="flex gap-2 pb-[50px] items-center">
-                    <img
+                    <Image
                       src={author?.image}
-                      className="h-[30px] w-[30px] rounded-full"
+                      height="30"
+                      width="30"
                       alt={`${author?.firstName} ${author?.lastName}`}
                     />
                     <p>
@@ -65,9 +66,10 @@ export default function Posts() {
                       <p className="text-gray-500 mt-2 pr-2">{post.body}</p>
                     </div>
                     <div className="mt-5 space-y-4 text-sm sm:mt-0 sm:space-y-2">
-                      <img
+                      <Image
                         src={author?.image}
-                        className="h-[200px] w-[200px] overflow-hidden"
+                        height="200"
+                        width="200"
                         alt={`${author?.firstName} ${author?.lastName}`}
                       />
                     </div>

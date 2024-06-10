@@ -1,4 +1,4 @@
-export default function Cta() {
+export default function CTA() {
   return (
     <section className="py-14">
       <div className="max-w-screen-xl mx-auto px-4 md:text-center md:px-8">
@@ -14,7 +14,7 @@ export default function Cta() {
         </div>
         <div className="flex gap-3 items-center mt-4 md:justify-center">
           <a
-            href="/posts/"
+            href="/posts/ "
             className="inline-block py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-lg shadow-md hover:shadow-none"
           >
             Go To Blog Section
@@ -24,4 +24,4 @@ export default function Cta() {
     </section>
   );
 }
-Cta.displayName = "Cta";
+CTA.displayName = "CTA";
