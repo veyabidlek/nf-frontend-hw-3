@@ -4,9 +4,10 @@ import Link from "next/link";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default () => {
+export default function PostsList() {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://dummyjson.com/posts?limit=100")
@@ -15,6 +16,7 @@ export default () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
   useEffect(() => {
     axios
       .get("https://dummyjson.com/users?limit=100")
@@ -23,14 +25,18 @@ export default () => {
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
   const getAuthor = (userId) => {
     return users.find((user) => user.id === userId);
   };
+
   return (
     <section className="mt-12 max-w-screen-lg mx-auto px-4 md:px-8">
-      <ul className="mt-12 space-y-6 ">
+      <ul className="mt-12 space-y-6">
         {posts.map((post) => {
-          const author = getAuthor(post.id);
+          const author = getAuthor(post.userId);
+          if (!author) return null;
+
           return (
             <li
               key={post.id}
@@ -42,6 +48,7 @@ export default () => {
                     <img
                       src={author.image}
                       className="h-[30px] w-[30px] rounded-full"
+                      alt={`${author.firstName} ${author.lastName}`}
                     />
                     <p>
                       {`${author.firstName} ${author.lastName}`}
@@ -62,7 +69,9 @@ export default () => {
                     <div className="mt-5 space-y-4 text-sm sm:mt-0 sm:space-y-2">
                       <img
                         src={author.image}
-                        className="h-[200px] w-[200px] overflow-hidden"
+                        className="h-[200px] w
+                        [200px] overflow-hidden"
+                        alt={`${author.firstName} ${author.lastName}`}
                       />
                     </div>
                   </div>
@@ -85,4 +94,4 @@ export default () => {
       </ul>
     </section>
   );
-};
+}
