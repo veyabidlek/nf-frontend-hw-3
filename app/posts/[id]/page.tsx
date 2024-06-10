@@ -7,19 +7,36 @@ import NavBar from "@/app/components/navBar";
 import Footer from "@/app/components/footer";
 import Image from "next/image";
 
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+};
+
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  image: string;
+  address: {
+    country: string;
+  };
+};
+
 const PostPage = () => {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
-  const [author, setAuthor] = useState(null);
+  const [post, setPost] = useState<Post | null>(null);
+  const [author, setAuthor] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id) {
       axios
-        .get(`https://dummyjson.com/posts/${id}`)
+        .get<Post>(`https://dummyjson.com/posts/${id}`)
         .then((response) => {
           setPost(response.data);
-          return axios.get(
+          return axios.get<User>(
             `https://dummyjson.com/users/${response.data.userId}`
           );
         })
@@ -56,9 +73,9 @@ const PostPage = () => {
               <div className="mt-6">
                 <Image
                   src={author.image}
-                  width="16"
-                  height="16"
-                  alt="author image"
+                  width={64}
+                  height={64}
+                  alt={`${author.firstName} ${author.lastName}`}
                 />
                 <div className="mt-3">
                   <span className="block font-semibold">

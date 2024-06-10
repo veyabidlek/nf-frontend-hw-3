@@ -11,7 +11,7 @@ export default function Posts() {
 
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/posts?limit=100")
+      .get("https://dummyjson.com/posts?limit=50")
       .then((response) => {
         setPosts(response.data.posts);
       })
@@ -20,7 +20,7 @@ export default function Posts() {
 
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/users?limit=100")
+      .get("https://dummyjson.com/users?limit=50")
       .then((response) => {
         setUsers(response.data.users);
       })
